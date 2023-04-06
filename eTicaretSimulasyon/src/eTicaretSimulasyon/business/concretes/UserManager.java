@@ -2,19 +2,25 @@ package eTicaretSimulasyon.business.concretes;
 
 import eTicaretSimulasyon.business.abstracts.UserInformationService;
 import eTicaretSimulasyon.business.abstracts.UserService;
+import eTicaretSimulasyon.core.abstracts.ExternalAuthenticationService;
 import eTicaretSimulasyon.dataAccess.abstracts.UserDao;
 import eTicaretSimulasyon.entities.concretes.User;
 
 public class UserManager implements UserService {
 	
+	private final ExternalAuthenticationService facebookService;
 	private UserDao userDao;
 	private UserInformationService userInformationService;
 	
 	
-	public UserManager(UserDao userDao, UserInformationService userInformationService) {
+	public UserManager(
+			UserDao userDao, 
+			UserInformationService userInformationService,
+			ExternalAuthenticationService facebookService) {
 		super();
 		this.userDao = userDao;
 		this.userInformationService = userInformationService;
+		this.facebookService = facebookService;
 	}
 
 	@Override
@@ -42,6 +48,11 @@ public class UserManager implements UserService {
 			System.out.println("Kayıt işlemi başarısız. Girdiğiniz bilgileri kontrol ediniz.");
 		}
 		
+	}
+
+	@Override
+	public boolean loginWithFacebookService(User user) {
+		return facebookService.authenticate(user);
 	}
 	
 }
