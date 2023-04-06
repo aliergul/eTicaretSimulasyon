@@ -5,7 +5,6 @@ import eTicaretSimulasyon.business.concretes.UserInformationManager;
 import eTicaretSimulasyon.business.concretes.UserManager;
 import eTicaretSimulasyon.core.concretes.FacebookAuthenticationServiceAdapter;
 import eTicaretSimulasyon.dataAccess.concretes.HibernateUserDao;
-import eTicaretSimulasyon.entities.concretes.User;
 
 public class Main {
 
